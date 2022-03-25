@@ -1,0 +1,72 @@
+@use "../../styles/global.scss" as global;
+
+.button {
+    height: 60px;
+    padding: 18px 25px 16px;
+    border: none;
+    background: var(--blue-no-gradient-second);
+    border-radius: 6px;
+    color: var(--white);
+    cursor: pointer;
+    font-family: var(--font-family);
+    font-size: var(--bigger-size);
+    line-height: 0;
+    text-align: center;
+    transition: all 0.5s;
+}
+
+.size280 {
+    width: 280px;
+}
+
+.size240 {
+    width: 240px;
+}
+
+.size125 {
+    width: 125px;
+}
+
+.baseAnimated {
+    &:hover {
+        background: var(--blue-no-gradient-first);
+    }
+}
+
+.baseAnimatedBlackTheme {
+    &:hover {
+        background: var(--black-theme-blue-no-gradient-first);
+    }
+}
+
+.failureAnimated {
+    &:hover {
+        background: var(--red-danger);
+    }
+}
+
+.successAnimated {
+    &:hover {
+        background: var(--green-success);
+    }
+}
+
+.buttonBlackTheme {
+    background: var(--black-theme-blue-no-gradient-second);
+    color: var(--black-theme-white-text);
+}
+
+@media (max-width: 1228px) {
+    .button {
+        padding-right: global.getSizeW(15, 25, "tablet");
+        padding-left: global.getSizeW(15, 25, "tablet");
+        font-size: var(--regular-size);
+    }
+}
+
+@media (max-height: 1080px) {
+    .button {
+        padding-top: global.getSizeH(9, 18, "mid");
+        padding-bottom: global.getSizeH(8, 16, "mid");
+    }
+}

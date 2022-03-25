@@ -1,0 +1,12 @@
+.notificationList {
+    width: 750px;
+    margin: 92px auto 40px;
+}
+
+@media (max-width: 768px) {
+    .notificationList {
+        width: auto;
+        max-width: 100%;
+        margin: 10px;
+    }
+}

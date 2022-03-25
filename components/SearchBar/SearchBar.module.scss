@@ -1,0 +1,63 @@
+@use "../../styles/global.scss" as global;
+
+.searchBar {
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: row;
+    padding: 22px 0 22px 41px;
+    background: var(--white);
+    border-radius: 6px;
+    grid-area: search;
+
+    .input {
+        width: 100%;
+        border: none;
+        margin-left: 10px;
+        outline: none;
+
+        &::placeholder {
+            color: var(--grey-darker);
+            font-size: var(--regular-size);
+        }
+    }
+}
+
+.searchBarBlackTheme {
+    background: var(--black-theme-white) !important;
+
+    .input {
+        background: var(--black-theme-white);
+        caret-color: var(--white);
+        color: var(--black-theme-white-text);
+    }
+
+    .input::placeholder {
+        color: var(--black-theme-white-text);
+    }
+}
+
+@media (max-width: 1228px) {
+    .searchBar {
+        padding-left: global.getSizeW(11, 22, "tablet");
+    }
+}
+
+@media (max-width: 768px) {
+    .searchBar {
+        padding-left: 11px;
+    }
+}
+
+@media (max-height: 1080px) {
+    .searchBar {
+        padding-top: global.getSizeH(11, 22, "mid");
+        padding-bottom: global.getSizeH(11, 22, "mid");
+    }
+}
+
+@media (max-height: 768px) {
+    .searchBar {
+        padding-top: 11px;
+        padding-bottom: 11px;
+    }
+}

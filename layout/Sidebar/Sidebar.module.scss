@@ -1,0 +1,339 @@
+@use "../../styles/global.scss" as global;
+
+.sidebar {
+    background: var(--white);
+    font-family: var(--font-family);
+
+    .user {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 92px 0 86px;
+        color: var(--black);
+        font-size: var(--bigger-size);
+        font-weight: bold;
+        gap: 15px;
+
+        .name {
+            cursor: pointer;
+            text-align: center;
+            word-break: break-word;
+        }
+    }
+
+    .actions {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        color: var(--grey-darker);
+        font-size: var(--regular-size);
+        font-weight: bold;
+        line-height: var(--regular-size);
+
+        .logoutButton {
+            margin-top: global.getSizeH(385, 670, "large");
+        }
+
+        .nav {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 44px;
+        }
+
+        .buttonWrapper {
+            cursor: pointer;
+            -webkit-tap-highlight-color: rgb(0 0 0 / 0%);
+            transition: 0.5s border;
+
+            &:not(:hover) {
+                border-left: 3px solid transparent;
+            }
+
+            &:hover {
+                border-left: 3px solid var(--blue-no-gradient-second);
+            }
+
+            .button {
+                &:not(:hover) {
+                    .svg > linearGradient > stop {
+                        stop-color: var(--grey-darker);
+                        transition: 0.5s;
+                    }
+                }
+
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                margin-left: 36px;
+                line-height: 40px;
+
+                .unread {
+                    margin-left: 10px;
+                }
+
+                .link {
+                    align-self: center;
+                    margin-left: 16px;
+                    text-decoration: none;
+                    transition: 0.5s color;
+                }
+
+                &:hover {
+                    color: var(--blue-no-gradient-second);
+
+                    .svg > linearGradient > stop {
+                        transition: 0.5s;
+
+                        &:first-of-type {
+                            stop-color: var(--blue-no-gradient-first);
+                        }
+
+                        &:last-of-type {
+                            stop-color: var(--blue-no-gradient-second);
+                        }
+                    }
+                }
+            }
+        }
+
+        .active {
+            border-left: 3px solid var(--blue-no-gradient-second) !important;
+            color: var(--blue-no-gradient);
+
+            .svg > linearGradient > stop {
+                &:first-of-type {
+                    stop-color: var(--blue-no-gradient-first) !important;
+                }
+
+                &:last-of-type {
+                    stop-color: var(--blue-no-gradient-second) !important;
+                }
+            }
+        }
+    }
+}
+
+.sidebarBlackTheme {
+    background: var(--black-theme-white);
+
+    .user {
+        color: var(--black-theme-white-text);
+    }
+
+    .actions {
+        color: var(--black-theme-white-text);
+
+        .svg > linearGradient > stop {
+            &:first-of-type {
+                stop-color: var(--black-theme-white-text) !important;
+            }
+
+            &:last-of-type {
+                stop-color: var(--black-theme-white-text) !important;
+            }
+        }
+
+        .buttonWrapper {
+            &:hover {
+                border-left: 3px solid var(--black-theme-blue-no-gradient-second);
+            }
+
+            .button {
+                &:hover {
+                    color: var(--black-theme-blue-no-gradient-second);
+
+                    .svg > linearGradient > stop {
+                        transition: 0.5s;
+
+                        &:first-of-type {
+                            stop-color: var(--black-theme-blue-no-gradient-first) !important;
+                        }
+
+                        &:last-of-type {
+                            stop-color: var(--black-theme-blue-no-gradient-second) !important;
+                        }
+                    }
+                }
+            }
+        }
+
+        .active {
+            border-left: 3px solid var(--black-theme-blue-no-gradient-second) !important;
+            color: var(--black-theme-blue-no-gradient-second);
+
+            .svg > linearGradient > stop {
+                &:first-of-type {
+                    stop-color: var(--black-theme-blue-no-gradient-first) !important;
+                }
+
+                &:last-of-type {
+                    stop-color: var(--black-theme-blue-no-gradient-second) !important;
+                }
+            }
+        }
+    }
+}
+
+@media (max-height: 1080px) {
+    .sidebar {
+        .user {
+            margin-top: global.getSizeH(30, 92, "mid");
+            margin-bottom: global.getSizeH(56, 86, "mid");
+            gap: global.getSizeH(10, 15, "mid");
+        }
+
+        .actions {
+            .nav {
+                gap: global.getSizeH(32, 50, "mid");
+            }
+
+            .logoutButton {
+                margin-top: global.getSizeH(224, 385, "mid");
+            }
+        }
+    }
+}
+
+@media (min-height: 1536px) {
+    .sidebar {
+        .actions {
+            .logoutButton {
+                margin-top: 670px;
+            }
+        }
+    }
+}
+
+@media (max-width: 1920px) {
+    .sidebar {
+        .actions {
+            .buttonWrapper {
+                .button {
+                    margin-left: global.getSizeW(18, 36, "desktop");
+
+                    .unread {
+                        margin-left: global.getSizeW(5, 10, "desktop");
+                    }
+
+                    .link {
+                        margin-left: global.getSizeW(8, 16, "desktop");
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1228px) {
+    .sidebar {
+        display: flex !important;
+        max-width: none !important;
+        flex-direction: row;
+        align-items: center;
+        padding:
+            0 global.getSizeW(15, 20, "tablet") 0
+            global.getSizeW(15, 20, "tablet");
+        margin: 0;
+
+        .user {
+            display: block;
+            width: 30px;
+            height: 30px;
+            margin: 0;
+
+            .avatar {
+                width: 30px;
+                height: 30px;
+            }
+
+            .name {
+                display: none;
+            }
+        }
+
+        .actions {
+            display: flex;
+            flex: 1;
+            flex-direction: row;
+            justify-content: center;
+            gap: 40px;
+
+            .logoutButton {
+                margin-top: 0;
+            }
+
+            .nav {
+                display: flex;
+                flex-direction: row;
+                gap: 40px;
+            }
+
+            .buttonWrapper {
+                max-width: 40px;
+                height: 24px;
+                border: none;
+
+                &:hover {
+                    border: none;
+                }
+
+                &:not(:hover) {
+                    border: none;
+                }
+
+                .button {
+                    display: flex;
+                    height: 24px;
+                    flex-direction: row;
+                    align-items: center;
+                    margin-left: 0;
+                    line-height: 40px;
+
+                    .unreadWrapper {
+                        position: relative;
+                        width: 0;
+                        height: 0;
+                    }
+
+                    .unread {
+                        position: relative;
+                        top: -8px;
+                        left: -8px;
+                        margin-left: 0;
+                    }
+
+                    .link {
+                        display: none;
+                    }
+                }
+            }
+
+            .active {
+                border: none !important;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 40px;
+        padding:
+            0 global.getSizeW(5, 15, "mobile") 0
+            global.getSizeW(5, 15, "mobile");
+        margin: 0;
+
+        .actions {
+            gap: global.getSizeW(25, 40, "mobile");
+
+            .nav {
+                gap: global.getSizeW(25, 40, "mobile");
+            }
+        }
+    }
+}

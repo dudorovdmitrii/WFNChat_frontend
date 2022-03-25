@@ -1,0 +1,82 @@
+@use "sass:map";
+
+$largeHeightMax: 1536;
+$largeHeightMin: 1080;
+$midHeightMax: 1080;
+$midHeightMin: 768;
+$smallHeightMax: 768;
+$smallHeightMin: 568;
+$deskstopMaxWidth: 1920;
+$deskstopMinWidth: 1228;
+$tabletMaxWidth: 1228;
+$tabletMinWidth: 768;
+$mobileMaxWidth: 768;
+$mobileMinWidth: 320;
+$smallest-dekstop-huge-size-noPx: 18;
+$smallest-dekstop-dekstop-big-size-noPx: 10;
+$smallest-dekstop-bigger-size-noPx: 9;
+$smallest-dekstop-regular-size-noPx: 8;
+$smallest-dekstop-tiny-size-noPx: 7;
+$smallest-dekstop-super-tiny-size-noPx: 6;
+$huge-size-noPx: 36;
+$big-size-noPx: 20;
+$bigger-size-noPx: 18;
+$regular-size-noPx: 16;
+$tiny-size-noPx: 14;
+$super-tiny-size-noPx: 13;
+
+@function getWidths($device) {
+    @if $device == "desktop" {
+        @return ("min-width": $deskstopMinWidth, "max-width": $deskstopMaxWidth);
+    }
+
+    @if $device == "tablet" {
+        @return ("min-width": $tabletMinWidth, "max-width": $tabletMaxWidth);
+    }
+
+    @if $device == "mobile" {
+        @return ("min-width": $mobileMinWidth, "max-width": $mobileMaxWidth);
+    }
+
+    @return ("min-width": 0, "max-width": 0);
+}
+
+@function getHeights($device) {
+    @if $device == "large" {
+        @return ("min-height": $largeHeightMin, "max-height": $largeHeightMax);
+    }
+
+    @if $device == "mid" {
+        @return ("min-height": $midHeightMin, "max-height": $midHeightMax);
+    }
+
+    @if $device == "small" {
+        @return ("min-height": $smallHeightMin, "max-height": $smallHeightMax);
+    }
+
+    @return ("min-height": 0, "max-height": 0);
+}
+
+@function getSizeW($minSize, $maxSize, $device) {
+    $minWidth: map.get(getWidths($device), "min-width");
+    $maxWidth: map.get(getWidths($device), "max-width");
+    $minWidthPx: $minWidth + px;
+    $minSizePx: $minSize + px;
+
+    @return calc(
+        (100vw - $minWidthPx) / ($maxWidth - $minWidth) * ($maxSize - $minSize) +
+        $minSizePx
+    );
+}
+
+@function getSizeH($minSize, $maxSize, $device) {
+    $minHeight: map.get(getHeights($device), "min-height");
+    $maxHeight: map.get(getHeights($device), "max-height");
+    $minHeightPx: $minHeight + px;
+    $minSizePx: $minSize + px;
+
+    @return calc(
+        (100vh - $minHeightPx) / ($maxHeight - $minHeight) * ($maxSize - $minSize) +
+        $minSizePx
+    );
+}

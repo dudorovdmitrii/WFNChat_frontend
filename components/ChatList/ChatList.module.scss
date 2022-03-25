@@ -1,0 +1,75 @@
+@use "../../styles/global.scss" as global;
+
+.chatList {
+    display: flex;
+    width: 596px;
+    height: global.getSizeH(792, 1248, "large");
+    flex-direction: column;
+    font-family: var(--font-family);
+    gap: 20px;
+    line-height: 26px;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: var(--grey-mid);
+        border-radius: 10px;
+    }
+}
+
+.chatListBlackTheme {
+    &::-webkit-scrollbar-thumb {
+        background: var(--black-theme-grey-dark);
+    }
+}
+
+@media (max-width: 1920px) {
+    .chatList {
+        width: global.getSizeW(412, 596, "desktop");
+    }
+}
+
+@media (max-width: 1228px) {
+    .chatList {
+        width: global.getSizeW(244, 412, "tablet");
+        height: global.getSizeH(576, 810, "mid") !important;
+    }
+}
+
+@media (max-width: 768px) {
+    @media (max-height: 1080px) {
+        .chatList {
+            height: global.getSizeH(540, 810, "mid") !important;
+        }
+    }
+
+    .chatList {
+        width: global.getSizeW(300, 490, "mobile");
+    }
+}
+
+@media (max-height: 1080px) {
+    .chatList {
+        height: global.getSizeH(582, 792, "mid");
+        gap: global.getSizeH(14, 20, "mid");
+    }
+}
+
+@media (max-height: 768px) {
+    @media (max-width: 768px) {
+        .chatList {
+            height: global.getSizeH(382, 564, "small") !important;
+            gap: global.getSizeH(6, 14, "small");
+        }
+    }
+}
+
+@media (min-height: 1536px) {
+    .chatList {
+        height: 1228px;
+    }
+}

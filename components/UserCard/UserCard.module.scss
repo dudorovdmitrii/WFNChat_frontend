@@ -1,0 +1,157 @@
+@use "../../styles/global.scss" as global;
+
+.userCard {
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    background: var(--white);
+    border-radius: 6px;
+
+    .main {
+        flex: 1;
+        padding: 15px;
+        line-height: 26px;
+
+        .name {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 10px;
+            color: var(--black);
+            font-size: var(--bigger-size);
+            font-weight: bold;
+            gap: 15px;
+            text-align: center;
+            word-break: break-word;
+
+            .statusWord {
+                color: var(--blue-darker);
+                font-size: var(--regular-size);
+                word-break: normal;
+            }
+        }
+
+        .actions {
+            display: flex;
+            flex-direction: row;
+        }
+    }
+
+    .svg {
+        display: none;
+        margin-right: 20px;
+        cursor: pointer;
+
+        &:not(:hover) {
+            fill: var(--grey-darker);
+            transition: 0.5s;
+        }
+
+        &:hover {
+            fill: var(--blue-no-gradient-second);
+            transition: 0.5s;
+        }
+
+        > path {
+            pointer-events: none;
+        }
+    }
+
+    .open {
+        display: block;
+    }
+}
+
+.userCardBlackTheme {
+    background: var(--black-theme-white);
+
+    .main {
+        .name {
+            color: var(--black-theme-white-text);
+
+            .statusWord {
+                color: var(--blue-no-gradient-second);
+            }
+        }
+    }
+
+    .svg {
+        &:not(:hover) {
+            fill: var(--black-theme-white-text);
+            transition: 0.5s;
+        }
+
+        &:hover {
+            fill: var(--blue-no-gradient-second);
+            transition: 0.5s;
+        }
+    }
+}
+
+@media (max-height: 1080px) {
+    .userCard {
+        padding-top: global.getSizeH(6, 10, "mid");
+        padding-bottom: global.getSizeH(6, 10, "mid");
+
+        .main {
+            padding-top: global.getSizeH(10, 15, "mid");
+            padding-bottom: global.getSizeH(10, 15, "mid");
+
+            .name {
+                margin-bottom: global.getSizeH(6, 10, "mid");
+                gap: global.getSizeH(10, 15, "mid");
+            }
+        }
+    }
+}
+
+@media (max-width: 1920px) {
+    .userCard {
+        padding-right: global.getSizeW(6, 10, "desktop");
+        padding-left: global.getSizeW(6, 10, "desktop");
+
+        .main {
+            padding-right: global.getSizeW(10, 15, "desktop");
+            padding-left: global.getSizeW(10, 15, "desktop");
+
+            .name {
+                margin-bottom: global.getSizeW(6, 10, "desktop");
+                gap: global.getSizeW(10, 15, "desktop");
+            }
+        }
+
+        .svg {
+            margin-right: global.getSizeW(14, 20, "desktop");
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .userCard {
+        flex-direction: column;
+        padding: 5px;
+
+        .main {
+            padding: 5px;
+
+            .name {
+                margin-bottom: 10px;
+                font-size: var(--regular-size);
+                gap: 5px;
+
+                .statusWord {
+                    font-size: var(--tiny-size);
+                }
+            }
+        }
+
+        .svg {
+            margin-right: 5px;
+        }
+
+        .actions {
+            justify-content: space-around;
+        }
+    }
+}

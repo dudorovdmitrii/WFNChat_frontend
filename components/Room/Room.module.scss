@@ -1,0 +1,313 @@
+@use "../../styles/global.scss" as global;
+
+.room {
+    width: 580px;
+    box-sizing: border-box;
+    padding: 30px 40px 40px;
+    background: var(--white);
+    border-radius: 6px;
+    cursor: pointer;
+
+    .upperBar {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 17px;
+
+        .roomInfo {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            .avatarWrapper {
+                width: 54px;
+                height: 54px;
+
+                .isOnlineWrapper {
+                    position: relative;
+                    z-index: 100;
+                    display: none;
+                    width: 0;
+                    height: 0;
+
+                    .isOnline {
+                        position: relative;
+                        z-index: 100;
+                        width: 10px;
+                        height: 10px;
+                        border: 1.5px solid var(--white);
+                        background: var(--green-success);
+                        border-radius: 50%;
+                    }
+                }
+
+                .isOnlineOpen {
+                    display: block;
+                }
+            }
+
+            .roomName {
+                margin-left: 22px;
+                color: var(--black);
+                font-size: var(--bigger-size);
+                font-weight: bold;
+                word-break: break-word;
+            }
+        }
+
+        .lastMessageTime {
+            color: var(--grey-darker);
+            font-size: var(--regular-size);
+        }
+    }
+
+    .lastMessage {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        color: var(--grey-darker);
+        font-size: var(--regular-size);
+        gap: 30px;
+
+        .content {
+            max-width: 450px;
+
+            .lastMessageIcon {
+                > path {
+                    fill: var(--blue-no-gradient-second);
+                }
+            }
+        }
+    }
+}
+
+.currentRoom {
+    background: var(--blue-gradient);
+
+    .avatarWrapper {
+        .isOnline {
+            border: 1.5px solid var(--green-success) !important;
+        }
+    }
+
+    .upperBar {
+        .lastMessageTime {
+            color: var(--white);
+        }
+    }
+
+    .lastMessage {
+        color: var(--white);
+
+        .content {
+            .lastMessageIcon {
+                > path {
+                    fill: var(--white);
+                }
+            }
+        }
+    }
+}
+
+.roomBlackTheme {
+    background: var(--black-theme-white);
+
+    .upperBar {
+        .roomInfo {
+            .avatarWrapper {
+                .isOnline {
+                    border: 1.5px solid var(--black-theme-white);
+                }
+            }
+
+            .roomName {
+                color: var(--black-theme-white-text);
+            }
+        }
+
+        .lastMessageTime {
+            color: var(--black-theme-white-text);
+        }
+    }
+
+    .lastMessage {
+        color: var(--black-theme-white-text);
+
+        .unread {
+            background: var(--red);
+            color: var(--white);
+        }
+
+        .content {
+            .lastMessageIcon {
+                > path {
+                    fill: var(--black-theme-blue-no-gradient-second);
+                }
+            }
+        }
+    }
+}
+
+.currentRoomBlackTheme {
+    background: var(--black-theme-blue-gradient);
+
+    .avatarWrapper {
+        .isOnline {
+            border: 1.5px solid var(--green-success) !important;
+        }
+    }
+
+    .upperBar {
+        .lastMessageTime {
+            color: var(--white);
+        }
+    }
+
+    .lastMessage {
+        color: var(--white);
+
+        .content {
+            .lastMessageIcon {
+                > path {
+                    fill: var(--black-theme-white-text) !important;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1920px) {
+    .room {
+        width: global.getSizeW(401, 580, "desktop");
+
+        .upperBar {
+            .roomInfo {
+                .roomName {
+                    margin-left: global.getSizeW(11, 22, "desktop");
+                }
+            }
+        }
+
+        .lastMessage {
+            gap: global.getSizeW(15, 30, "desktop");
+
+            .content {
+                max-width: global.getSizeW(385, 450, "desktop");
+            }
+        }
+    }
+}
+
+@media (max-width: 1228px) {
+    .room {
+        width: global.getSizeW(233, 401, "tablet");
+        padding-right: global.getSizeW(15, 40, "tablet");
+        padding-left: global.getSizeW(15, 40, "tablet");
+
+        .upperBar {
+            .roomInfo {
+                .avatarWrapper {
+                    width: global.getSizeW(27, 54, "tablet");
+                    height: global.getSizeW(27, 54, "tablet");
+
+                    .avatar {
+                        width: global.getSizeW(27, 54, "tablet");
+                        height: global.getSizeW(27, 54, "tablet");
+                    }
+
+                    .avatarDialog {
+                        width: global.getSizeW(27, 54, "tablet");
+                        height: global.getSizeW(27, 54, "tablet");
+                    }
+                }
+
+                .roomName {
+                    margin-left: global.getSizeW(8, 11, "tablet");
+                    font-size: var(--regular-size);
+                }
+            }
+
+            .lastMessageTime {
+                font-size: var(--tiny-size);
+            }
+        }
+
+        .lastMessage {
+            font-size: var(--regular-size);
+            gap: global.getSizeW(8, 15, "tablet");
+
+            .content {
+                max-width: global.getSizeW(180, 385, "tablet");
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .room {
+        width: global.getSizeW(290, 480, "mobile");
+        padding-right: 15px;
+        padding-left: 15px;
+
+        .upperBar {
+            .roomInfo {
+                .avatarWrapper {
+                    width: 27px;
+                    height: 27px;
+
+                    .avatar {
+                        width: 27px;
+                        height: 27px;
+                    }
+
+                    .avatarDialog {
+                        width: 27px;
+                        height: 27px;
+                    }
+
+                    .isOnlineWrapper {
+                        .isOnline {
+                            width: 8px;
+                            height: 8px;
+                        }
+                    }
+                }
+
+                .roomName {
+                    margin-left: 8px;
+                }
+            }
+        }
+
+        .lastMessage {
+            gap: 8px;
+
+            .content {
+                max-width: 250px;
+            }
+        }
+    }
+}
+
+@media (max-height: 1080px) {
+    .room {
+        padding-top: global.getSizeH(20, 40, "mid");
+        padding-bottom: global.getSizeH(20, 40, "mid");
+
+        .upperBar {
+            margin-bottom: global.getSizeH(8, 17, "mid");
+        }
+    }
+}
+
+@media (max-height: 768px) {
+    .room {
+        padding-top: 20px;
+        padding-bottom: 20px;
+
+        .upperBar {
+            margin-bottom: 8px;
+        }
+    }
+}

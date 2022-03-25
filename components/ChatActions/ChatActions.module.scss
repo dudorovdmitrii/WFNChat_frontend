@@ -1,0 +1,273 @@
+@use "../../styles/global.scss" as global;
+
+.chatActions {
+    position: relative;
+    z-index: 100;
+    display: grid;
+    box-sizing: border-box;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    font-family: var(--font-family);
+    grid-template-areas:
+        "title button"
+        "search search";
+    grid-template-columns: 1fr 1fr;
+
+    .title {
+        font-size: var(--huge-size);
+        font-weight: bold;
+        grid-area: title;
+    }
+
+    .button {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        grid-area: button;
+        justify-items: center;
+        justify-self: flex-end;
+
+        .plus {
+            font-size: var(--huge-size);
+            vertical-align: middle;
+        }
+    }
+
+    .searchBar {
+        margin-top: 30px;
+        background: var(--white);
+    }
+}
+
+.modal {
+    display: none !important;
+
+    .form {
+        width: auto;
+        padding: 15px 20px;
+
+        .btnGroup {
+            display: flex;
+            width: 100%;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+
+        .chatSettings {
+            display: flex;
+            width: 100%;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+
+            .hiddenInputWrap {
+                display: flex;
+                height: 60px;
+                flex-direction: row;
+                align-items: center;
+                gap: 10px;
+
+                .fileName {
+                    align-self: flex-end;
+                }
+
+                .hiddenInput {
+                    width: 0;
+                    height: 0;
+                }
+
+                .addPhoto {
+                    z-index: 100;
+                }
+            }
+        }
+
+        .friendsSearchInput {
+            width: 100%;
+        }
+    }
+
+    .friendsList {
+        display: flex;
+        width: 100%;
+        height: 200px;
+        flex-direction: column;
+        margin-top: 20px;
+        overflow-y: auto;
+
+        .friendChoice {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--black);
+            margin-right: 10px;
+            color: var(--grey-darker);
+            font-size: var(--bigger-size);
+
+            .checkbox {
+                border: none;
+            }
+        }
+
+        .friendChoice:last-of-type {
+            border: none;
+        }
+
+        &::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: var(--grey-mid);
+            border-radius: 10px;
+        }
+    }
+}
+
+.modalOpen {
+    display: flex !important;
+}
+
+.chatActionsBlackTheme {
+    .title {
+        color: var(--black-theme-white-text);
+    }
+
+    .searchBar {
+        background: var(--black-theme-white);
+        caret-color: var(--white);
+        color: var(--black-theme-white-text);
+    }
+
+    .plus {
+        fill: var(--black-theme-white-text);
+    }
+}
+
+.modalBlackTheme {
+    .friendsList {
+        .friendChoice {
+            color: var(--black-theme-grey-darker);
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: var(--black-theme-grey-mid);
+            border-radius: 10px;
+        }
+    }
+}
+
+@media (max-height: 1080px) {
+    .chatActions {
+        padding-bottom: global.getSizeH(14, 20, "mid");
+
+        .searchBar {
+            margin-top: global.getSizeH(20, 30, "mid");
+        }
+    }
+}
+
+@media (max-height: 768px) {
+    .chatActions {
+        padding-bottom: global.getSizeH(6, 14, "small");
+
+        .searchBar {
+            margin-top: global.getSizeH(10, 20, "small");
+        }
+    }
+}
+
+@media (max-width: 1228px) {
+    .chatActions {
+        margin-top: 10px;
+        grid-template-areas:
+            "button"
+            "search";
+        grid-template-columns: 1fr;
+
+        .title {
+            display: none;
+        }
+
+        .button {
+            width: global.getSizeW(233, 240, "tablet");
+            gap: global.getSizeW(5, 7, "tablet");
+            justify-self: center;
+
+            .plus {
+                font-size: var(--regular-size);
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .chatActions {
+        grid-template-areas:
+            "button"
+            "search";
+        grid-template-columns: 1fr;
+
+        .title {
+            display: none;
+        }
+
+        .button {
+            width: 233px;
+            gap: 5px;
+            justify-self: center;
+
+            .plus {
+                font-size: var(--regular-size);
+            }
+        }
+    }
+
+    .modal {
+        .form {
+            width: auto;
+            padding: 5px;
+
+            .btnGroup {
+                width: auto;
+                gap: 5px;
+
+                .btn {
+                    width: 145px;
+                }
+            }
+
+            .chatSettings {
+                flex-direction: column;
+                gap: 10px;
+
+                .nameInput {
+                    width: 100%;
+                    padding: 5px;
+                }
+            }
+
+            .friendsSearchInput {
+                width: 100%;
+                padding: 5px;
+            }
+        }
+
+        .friendsList {
+            width: 100%;
+            height: 200px;
+            margin-top: 10px;
+
+            .friendChoice {
+                padding: 5px 0;
+                margin-right: 5px;
+            }
+        }
+    }
+}

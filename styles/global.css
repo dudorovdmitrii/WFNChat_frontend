@@ -1,0 +1,67 @@
+.warning {
+    opacity: 0;
+    transition: visibility 1s, opacity 1s;
+    visibility: hidden;
+}
+
+.warningOpen {
+    opacity: 1;
+    visibility: visible;
+}
+
+:root {
+    --font-family: "Poppins", sans-serif;
+    --huge-size: 36px;
+    --big-size: 20px;
+    --bigger-size: 18px;
+    --regular-size: 16px;
+    --tiny-size: 14px;
+    --super-tiny-size: 13px;
+    --smallest-dekstop-huge-size: 18px;
+    --smallest-dekstop-dekstop-big-size: 10px;
+    --smallest-dekstop-bigger-size: 9px;
+    --smallest-dekstop-regular-size: 8px;
+    --smallest-dekstop-tiny-size: 7px;
+    --smallest-dekstop-super-tiny-size: 6px;
+    --black: #000;
+    --blue-gradient: linear-gradient(142.25deg, #7cb8f7 20.3%, #2a8bf2 74.69%);
+    --blue-no-gradient-first: #7cb8f7;
+    --blue-no-gradient-second: #2a8bf2;
+    --blue-darker: #2d6de7;
+    --red: #f36;
+    --red-danger: #cd0235;
+    --grey-bright:
+        linear-gradient(
+            90deg,
+            rgb(206 206 215) 0%,
+            rgb(229 223 229) 100%
+        );
+    --grey-darker: #6b758d;
+    --grey-dark: #444b5c;
+    --grey-mid: #b7bdcb;
+    --grey-smooth: rgb(159 138 138 / 15%);
+    --green-success: rgb(46 204 46);
+    --white: #fff;
+    --white-darker: #f2f2f3;
+    --black-theme-blue-gradient:
+        linear-gradient(
+            142.25deg,
+            #4889cd 20.3%,
+            #005dc1 74.69%
+        );
+    --black-theme-blue-no-gradient-first: #4889cd;
+    --black-theme-blue-no-gradient-second: #005dc1;
+    --black-theme-grey-bright:
+        linear-gradient(
+            90deg,
+            rgb(22 22 26) 0%,
+            rgb(34 32 34) 100%
+        );
+    --black-theme-grey-darker: #9cabcd;
+    --black-theme-grey-dark: #444b5c;
+    --black-theme-grey-mid: #b7bdcb;
+    --black-theme-grey-smooth: rgb(159 138 138 / 15%);
+    --black-theme-white: #221e1e;
+    --black-theme-white-dark: #323238;
+    --black-theme-white-text: #c7c7c7;
+}

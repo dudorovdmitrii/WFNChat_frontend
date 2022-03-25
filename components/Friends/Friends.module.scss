@@ -1,0 +1,336 @@
+@use "../../styles/global.scss" as global;
+
+.friends {
+    display: flex;
+    overflow: auto;
+    width: 1400px;
+    flex-flow: column wrap;
+    margin: 110px auto 40px;
+    gap: 20px;
+
+    .paginationBar {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        padding: 20px;
+        margin-left: 227px;
+        color: var(--black);
+        font-size: var(--big-size);
+        gap: 20px;
+        justify-items: center;
+
+        .page {
+            display: none;
+            cursor: pointer;
+            transition: color 0.5s;
+
+            &:hover {
+                color: var(--blue-no-gradient-second);
+            }
+        }
+
+        .pageOpen {
+            display: block;
+        }
+
+        .pageSelected {
+            color: var(--blue-no-gradient-second);
+        }
+
+        .leftEndOpen {
+            display: block;
+        }
+
+        .rightEndOpen {
+            display: block;
+        }
+    }
+
+    .actions {
+        display: flex;
+        flex-flow: row;
+        align-items: center;
+        gap: 20px;
+
+        .searchBar {
+            flex: 1;
+        }
+
+        .filter {
+            z-index: 1000;
+            display: flex;
+            width: 207px;
+            flex-flow: row wrap;
+            font-size: var(--bigger-size);
+            gap: 10px;
+            -webkit-tap-highlight-color: rgb(0 0 0 / 0%);
+            text-align: center;
+
+            &:hover {
+                .arrow {
+                    linearGradient > stop {
+                        transition: 0.5s;
+
+                        &:first-of-type {
+                            stop-color: var(--blue-no-gradient-first);
+                        }
+
+                        &:last-of-type {
+                            stop-color: var(--blue-no-gradient-second);
+                        }
+                    }
+                }
+
+                .filterChoice {
+                    color: var(--blue-no-gradient-second);
+                }
+            }
+
+            .filterChoice {
+                cursor: pointer;
+                transition: color 0.5s;
+            }
+
+            .arrow {
+                cursor: pointer;
+                transform: rotate(-90deg);
+                transition: transform 0.5s;
+            }
+
+            .arrowIconOpen {
+                transform: rotate(0deg);
+            }
+
+            .choicesList {
+                position: absolute;
+                top: 194px;
+                padding: 10px;
+                background: var(--white);
+                border-radius: 6px;
+                color: var(--grey-darker);
+                font-size: var(--regular-size);
+                visibility: hidden;
+
+                .chosen {
+                    color: var(--blue-no-gradient-second);
+                }
+
+                .choice {
+                    width: 161px;
+                    margin-top: 20px;
+                    cursor: pointer;
+                    transition: color 0.5s;
+
+                    &:hover {
+                        color: var(--blue-no-gradient-second);
+                    }
+                }
+
+                .choice:first-of-type {
+                    margin-top: 0;
+                }
+            }
+
+            .choicesListOpen {
+                visibility: visible;
+            }
+        }
+    }
+
+    .usersList {
+        display: flex;
+        box-sizing: border-box;
+        flex-flow: row wrap;
+        margin-left: 227px;
+        gap: 20px;
+
+        .userCard {
+            min-width: 100%;
+            flex: 1;
+        }
+    }
+}
+
+.friendsBlackTheme {
+    .paginationBar {
+        color: var(--black-theme-white-text);
+
+        .page {
+            &:hover {
+                color: var(--black-theme-blue-no-gradient-second);
+            }
+        }
+
+        .pageSelected {
+            color: var(--black-theme-blue-no-gradient-second);
+        }
+    }
+
+    .actions {
+        .filter {
+            .filterChoice {
+                color: var(--black-theme-white-text);
+            }
+
+            .arrow {
+                linearGradient > stop {
+                    &:first-of-type {
+                        stop-color: var(--black-theme-white-text);
+                    }
+
+                    &:last-of-type {
+                        stop-color: var(--black-theme-white-text);
+                    }
+                }
+            }
+
+            &:hover {
+                .arrow {
+                    linearGradient > stop {
+                        transition: 0.5s;
+
+                        &:first-of-type {
+                            stop-color: var(--black-theme-blue-no-gradient-first);
+                        }
+
+                        &:last-of-type {
+                            stop-color: var(--black-theme-blue-no-gradient-second);
+                        }
+                    }
+                }
+
+                .filterChoice {
+                    color: var(--black-theme-blue-no-gradient-second);
+                }
+            }
+
+            .choicesList {
+                background: var(--black-theme-white);
+                color: var(--black-theme-white-text);
+
+                .chosen {
+                    color: var(--black-theme-blue-no-gradient-second);
+                }
+
+                .choice {
+                    &:hover {
+                        color: var(--black-theme-blue-no-gradient-second);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-height: 1080px) {
+    .friends {
+        margin: global.getSizeH(78, 110, "mid") auto 40px auto;
+        gap: global.getSizeH(14, 20, "mid");
+
+        .paginationBar {
+            padding: global.getSizeH(14, 20, "mid");
+        }
+
+        .actions {
+            .filter {
+                gap: global.getSizeH(6, 10, "mid");
+
+                .choicesList {
+                    top: global.getSizeH(134, 194, "mid");
+                    padding: 10px;
+
+                    .choice {
+                        margin-top: global.getSizeH(14, 20, "mid");
+                    }
+                }
+            }
+        }
+
+        .usersList {
+            gap: global.getSizeH(14, 20, "mid");
+        }
+    }
+}
+
+@media (max-width: 1920px) {
+    .friends {
+        width: global.getSizeW(800, 1400, "desktop");
+
+        .paginationBar {
+            padding: global.getSizeW(14, 20, "desktop");
+            gap: global.getSizeW(14, 20, "desktop");
+        }
+
+        .actions {
+            gap: global.getSizeW(14, 20, "desktop");
+        }
+
+        .usersList {
+            margin-left: global.getSizeW(223, 227, "desktop");
+        }
+    }
+}
+
+@media (max-width: 1228px) {
+    .friends {
+        width: global.getSizeW(700, 800, "tablet");
+
+        .paginationBar {
+            padding: 14px;
+            gap: 14px;
+        }
+
+        .actions {
+            gap: 14px;
+        }
+
+        .usersList {
+            margin-left: 223px;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .friends {
+        width: auto;
+        box-sizing: border-box;
+        margin: 10px !important;
+        gap: 10px;
+
+        .paginationBar {
+            padding: 10px;
+            margin-left: 10px;
+            gap: 10px;
+        }
+
+        .actions {
+            flex-direction: column;
+            gap: 10px;
+
+            .filter {
+                width: auto;
+                align-self: flex-start;
+                gap: 5px;
+
+                .choicesList {
+                    top: 38px;
+                    padding: 10px;
+
+                    .choice {
+                        width: 161px;
+                        margin-top: 20px;
+                    }
+                }
+            }
+
+            .searchBar {
+                width: 100%;
+            }
+        }
+
+        .usersList {
+            margin: 0;
+            gap: 10px;
+        }
+    }
+}

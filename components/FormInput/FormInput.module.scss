@@ -1,0 +1,29 @@
+.input {
+    width: 280px;
+    box-sizing: border-box;
+    padding: 10px 25px;
+    border: 1px solid var(--grey-dark);
+    font-family: var(--font-family);
+    outline: none;
+
+    &::placeholder {
+        font-size: var(--tiny-size);
+    }
+}
+
+.inputBlackTheme {
+    color: var(--black-theme-white-text);
+
+    &::placeholder {
+        color: var(--black-theme-white-text);
+    }
+}
+
+.incorrect {
+    background: var(--red-danger);
+    color: var(--white);
+
+    &::placeholder {
+        color: var(--white);
+    }
+}

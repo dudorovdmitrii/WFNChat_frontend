@@ -1,0 +1,916 @@
+@use "../../styles/global.scss" as global;
+
+.chat {
+    display: flex;
+    height: global.getSizeH(930, 1386, "large");
+    flex-direction: column;
+    background: var(--white);
+    font-family: var(--font-family);
+
+    .modal {
+        display: none !important;
+
+        .innerModal {
+            width: 500px;
+            padding: 20px;
+            background: var(--white);
+            border-radius: 6px;
+
+            .photoChange {
+                display: grid;
+                width: 100%;
+                align-items: center;
+                justify-content: space-around;
+                margin-bottom: 30px;
+                grid-template-areas:
+                    "header header"
+                    "photo btn";
+
+                .h2 {
+                    grid-area: header;
+                }
+
+                .photoWrapper {
+                    grid-area: photo;
+                }
+
+                .hiddenInputWrap {
+                    display: flex;
+                    height: 60px;
+                    flex-direction: row;
+                    gap: 5px;
+                    grid-area: btn;
+
+                    .hiddenInput {
+                        width: 0;
+                        height: 0;
+                        visibility: hidden;
+                    }
+
+                    .fileName {
+                        align-self: flex-end;
+                    }
+                }
+            }
+
+            .members {
+                width: 100%;
+                margin-top: 30px;
+
+                .membersList {
+                    display: flex;
+                    height: 150px;
+                    flex-direction: column;
+                    padding-right: 10px;
+                    margin: 30px 0;
+                    color: var(--grey-darker);
+                    font-size: var(--bigger-size);
+                    gap: 15px;
+                    overflow-x: hidden;
+                    overflow-y: auto;
+
+                    &::-webkit-scrollbar {
+                        width: 6px;
+                    }
+
+                    &::-webkit-scrollbar-thumb {
+                        background: var(--grey-mid);
+                        border-radius: 10px;
+                    }
+
+                    .member {
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+                        padding: 10px 0;
+                        border-bottom: 1px solid var(--black);
+                        word-break: break-word;
+                    }
+
+                    .member:last-of-type {
+                        border: none;
+                    }
+                }
+            }
+
+            .input {
+                width: 100%;
+                color: var(--grey-darker);
+                font-size: var(--regular-size);
+            }
+
+            .h2 {
+                margin-bottom: 15px;
+                font-size: var(--big-size);
+                font-weight: bold;
+                text-align: center;
+            }
+
+            .btnGroup {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                margin-top: 10px;
+                gap: 10px;
+            }
+        }
+    }
+
+    .modalOpen {
+        display: flex !important;
+    }
+
+    .closed {
+        opacity: 0;
+    }
+
+    .upperBar {
+        display: flex;
+        box-sizing: border-box;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 28px 38px 28px 60px;
+        border-bottom: 2px solid var(--grey-smooth);
+        background: var(--white-darker);
+
+        .moreWrapper {
+            height: 45px;
+
+            .modalsWrapper {
+                position: absolute;
+                width: 0;
+
+                .leaveBtn {
+                    position: relative;
+                    right: 280px;
+                    display: none;
+                }
+
+                .leaveBtnOpen {
+                    display: block;
+                }
+
+                .moreTab {
+                    position: relative;
+                    z-index: 1;
+                    right: 320px;
+                    display: none;
+                    min-width: 300px;
+                    flex-direction: column;
+                    padding: 10px;
+                    background: var(--grey-bright);
+                    border-radius: 6px;
+                    color: var(--black);
+
+                    .membersList {
+                        display: flex;
+                        min-height: 150px;
+                        flex-direction: column;
+                        padding: 0 20px;
+                        margin-top: 20px;
+                        gap: 15px;
+                        justify-items: center;
+                        overflow-x: hidden;
+                        overflow-y: auto;
+
+                        .member {
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            justify-content: space-between;
+                            font-size: var(--bigger-size);
+                            gap: 20px;
+
+                            .isOnline {
+                                font-size: var(--bigger-size);
+                            }
+                        }
+
+                        &::-webkit-scrollbar {
+                            width: 6px;
+                        }
+
+                        &::-webkit-scrollbar-thumb {
+                            background: var(--grey-mid);
+                            border-radius: 10px;
+                        }
+                    }
+
+                    .h2 {
+                        color: var(--black);
+                        font-size: var(--big-size);
+                        font-weight: bold;
+                        text-align: center;
+                    }
+
+                    .btnGroup {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: space-around;
+                        padding-top: 10px;
+                        margin-top: 20px;
+                        gap: 10px;
+                    }
+                }
+            }
+
+            .openMoreTab {
+                display: flex !important;
+            }
+
+            .moreIcon {
+                width: 45px;
+                height: 45px;
+                cursor: pointer;
+                -webkit-tap-highlight-color: rgb(0 0 0 / 0%);
+                visibility: hidden;
+            }
+
+            .moreIconOpen {
+                visibility: visible;
+            }
+        }
+
+        .title {
+            color: var(--black);
+            font-size: var(--bigger-size);
+            font-weight: bold;
+
+            .isOnline {
+                display: none;
+                margin-top: 6px;
+            }
+
+            .isOnlineOpen {
+                display: block;
+            }
+        }
+
+        .roomInfo {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .exitIcon {
+            display: none;
+        }
+
+        .exitIconOpen {
+            display: block;
+        }
+    }
+
+    .autoSizerWrapper {
+        z-index: 0;
+        height: calc(100% - 203px);
+        flex: 1;
+
+        .messages {
+            width: calc(100% - 17px) !important;
+            height: 100%;
+            overflow-x: hidden !important;
+
+            &::-webkit-scrollbar {
+                width: 6px;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background: var(--grey-mid);
+                border-radius: 10px;
+                visibility: hidden;
+            }
+
+            > div:first-child {
+                display: flex;
+                box-sizing: border-box;
+                flex: 1;
+                flex-direction: column;
+                background: var(--white);
+                overflow-x: hidden;
+                overflow-y: auto;
+            }
+        }
+
+        .scrollThumbOpened {
+            &::-webkit-scrollbar-thumb {
+                visibility: visible;
+            }
+        }
+
+        .noMessagesDiv {
+            display: flex;
+            flex: 1;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--huge-size);
+            font-weight: bold;
+            text-align: center;
+        }
+    }
+
+    .inputBar {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 19px 0 30px;
+        border-top: 2px solid var(--grey-smooth);
+        margin: 0 60px;
+        background: var(--white);
+        visibility: hidden;
+
+        .fileAdded {
+            display: none;
+            flex: 1;
+            color: var(--black);
+        }
+
+        .fileAddedOpen {
+            display: block;
+        }
+
+        .hiddenInputWrap {
+            display: flex;
+            align-items: center;
+            margin-right: 21px;
+
+            .hiddenInput {
+                width: 0;
+                height: 0;
+
+                .add {
+                    -webkit-tap-highlight-color: rgb(0 0 0 / 0%);
+                }
+            }
+        }
+
+        .open {
+            z-index: 100;
+        }
+
+        .send {
+            display: none;
+            width: 40px;
+            height: 40px;
+            margin-left: 32px;
+            -webkit-tap-highlight-color: rgb(0 0 0 / 0%);
+        }
+
+        .sendOpen {
+            display: block;
+        }
+
+        .loading {
+            display: none;
+        }
+
+        .loadingOpen {
+            display: block;
+        }
+
+        .input {
+            display: none;
+            flex: 1;
+            border: none;
+            color: var(--grey-darker);
+            font-size: var(--big-size);
+            line-height: var(--big-size);
+            outline: none;
+        }
+
+        .inputOpen {
+            display: block;
+        }
+
+        .svg {
+            cursor: pointer;
+
+            &:hover {
+                linearGradient > stop {
+                    transition: 0.5s;
+
+                    &:first-of-type {
+                        stop-color: var(--blue-no-gradient-first);
+                    }
+
+                    &:last-of-type {
+                        stop-color: var(--blue-no-gradient-second);
+                    }
+                }
+            }
+
+            &:not(:hover) {
+                linearGradient > stop {
+                    stop-color: var(--blue-no-gradient-second);
+                    transition: 0.5s;
+                }
+            }
+        }
+    }
+
+    .open {
+        visibility: visible;
+    }
+}
+
+.isOnline {
+    color: var(--blue-no-gradient-second);
+    font-size: var(--regular-size);
+}
+
+.chatBlackTheme {
+    background: var(--black-theme-white);
+
+    .upperBar {
+        border-bottom: 2px solid var(--black-theme-grey-smooth);
+        background: var(--black-theme-white-dark);
+
+        .moreWrapper {
+            .moreIcon > ellipse {
+                fill: var(--black-theme-white-text);
+            }
+
+            .moreTab {
+                background: var(--black-theme-grey-bright);
+                color: var(--black-theme-white-text);
+
+                .membersList {
+                    &::-webkit-scrollbar-thumb {
+                        background: var(--black-theme-grey-mid);
+                    }
+                }
+
+                .h2 {
+                    color: var(--black-theme-white-text);
+                }
+            }
+        }
+
+        .title {
+            color: var(--black-theme-white-text);
+        }
+
+        .exitIcon {
+            linearGradient > stop {
+                stop-color: var(--black-theme-white-text);
+            }
+        }
+    }
+
+    .inputBar {
+        border-top: 2px solid var(--black-theme-grey-smooth);
+        background: var(--black-theme-white);
+
+        .fileAdded {
+            color: var(--black-theme-white-text);
+        }
+
+        .input {
+            caret-color: var(--white);
+            color: var(--black-theme-white-text);
+            background: var(--black-theme-white);
+        }
+
+        .loading {
+            linearGradient > stop {
+                stop-color: var(--black-theme-blue-no-gradient-second);
+            }
+        }
+    }
+
+    .modal {
+        .innerModal {
+            background: var(--black-theme-white);
+            color: var(--black-theme-white-text);
+
+            .members {
+                .membersList {
+                    color: var(--black-theme-grey-darker);
+
+                    .member {
+                        border-bottom: 1px solid var(--black);
+                    }
+                }
+            }
+
+            .input {
+                background: var(--black-theme-white);
+                color: var(--black-theme-white-text);
+            }
+
+            .input::placeholder {
+                color: var(--black-theme-white-text);
+            }
+        }
+    }
+
+    .autoSizerWrapper {
+        .messages {
+            > div:first-child {
+                background: var(--black-theme-white);
+            }
+        }
+
+        .noMessagesDiv {
+            color: var(--black-theme-white-text);
+        }
+    }
+
+    .svg {
+        &:hover {
+            linearGradient > stop {
+                transition: 0.5s;
+
+                :first-of-type {
+                    stop-color: var(--black-theme-blue-no-gradient-first);
+                }
+
+                :last-of-type {
+                    stop-color: var(--black-theme-blue-no-gradient-second);
+                }
+            }
+        }
+
+        &:not(:hover) {
+            linearGradient > stop {
+                stop-color: var(--black-theme-blue-no-gradient-second);
+                transition: 0.5s;
+            }
+        }
+    }
+}
+
+@media (max-width: 1920px) {
+    .chat {
+        .modal {
+            .innerModal {
+                padding-right: global.getSizeW(10, 20, "desktop");
+                padding-left: global.getSizeW(10, 20, "desktop");
+
+                .members {
+                    .membersList {
+                        padding-right: global.getSizeW(5, 10, "desktop");
+                    }
+                }
+            }
+        }
+
+        .upperBar {
+            padding-right: global.getSizeW(19, 38, "desktop");
+            padding-left: global.getSizeW(30, 60, "desktop");
+
+            .moreWrapper {
+                .modalsWrapper {
+                    .leaveBtn {
+                        right: global.getSizeW(140, 280, "desktop");
+                        width: global.getSizeW(140, 280, "desktop");
+                    }
+
+                    .moreTab {
+                        right: global.getSizeW(310, 320, "desktop");
+                        padding-right: global.getSizeW(5, 10, "desktop");
+                        padding-left: global.getSizeW(5, 10, "desktop");
+
+                        .membersList {
+                            padding: 0 global.getSizeW(10, 20, "desktop");
+
+                            .member {
+                                gap: global.getSizeW(10, 20, "desktop");
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .inputBar {
+            margin: 0 global.getSizeW(30, 60, "desktop");
+        }
+    }
+}
+
+@media (max-width: 1228px) {
+    .chat {
+        height: global.getSizeH(698, 972, "mid") !important;
+        margin-top: 10px;
+
+        .modal {
+            .innerModal {
+                padding-right: 10px;
+                padding-left: 10px;
+
+                .members {
+                    .membersList {
+                        padding-right: 5px;
+                    }
+                }
+            }
+        }
+
+        .upperBar {
+            padding-right: 19px;
+            padding-left: 30px;
+
+            .moreWrapper {
+                .modalsWrapper {
+                    .leaveBtn {
+                        right: 140px;
+                        width: 140px;
+                    }
+
+                    .moreTab {
+                        right: 310px;
+                        padding-right: 5px;
+                        padding-left: 5px;
+
+                        .membersList {
+                            padding: 0 10px;
+
+                            .member {
+                                gap: 10px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .autoSizerWrapper {
+            .messages {
+                width: calc(100% - 8px) !important;
+
+                &::-webkit-scrollbar-thumb {
+                    visibility: visible;
+                }
+            }
+        }
+
+        .inputBar {
+            margin: 0 30px;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    @media (max-height: 1080px) {
+        .chat {
+            height: global.getSizeH(681, 948, "mid") !important;
+        }
+    }
+
+    .chat {
+        .modal {
+            width: 100%;
+            .innerModal {
+                padding: 10px;
+
+                .photoChange {
+                    margin-bottom: 0;
+
+                    .hiddenInputWrap {
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 0;
+
+                        .pickBtn {
+                            width: 100px;
+                        }
+
+                        .fileName {
+                            align-self: center;
+                            font-size: var(--tiny-size);
+                        }
+                    }
+
+                    .avatar {
+                        width: 45px;
+                        height: 45px;
+                    }
+                }
+
+                .members {
+                    margin-top: 0;
+
+                    .membersList {
+                        height: 150px;
+                        padding-right: 0;
+                        margin: 0;
+                        gap: 0;
+
+                        .member {
+                            padding: 0;
+                        }
+                    }
+                }
+
+                .h2 {
+                    margin-bottom: 10px !important;
+                }
+
+                .btnGroup {
+                    margin-top: 10px !important;
+                    gap: 10px;
+
+                    .btn {
+                        width: 100px;
+                    }
+                }
+            }
+        }
+
+        .upperBar {
+            padding-right: 5px;
+            padding-left: 5px;
+
+            .moreWrapper {
+                .modalsWrapper {
+                    .moreTab {
+                        right: 235px;
+                        min-width: 250px;
+                        padding: 10px;
+
+                        .h2 {
+                            margin: 5px 0;
+                        }
+
+                        .membersList {
+                            min-height: 150px;
+                            padding: 0 20px;
+                            margin-top: 20px;
+                            gap: 10px;
+                        }
+
+                        .btnGroup {
+                            padding-top: 10px;
+                            margin-top: 20px;
+                            gap: 5px !important;
+
+                            .btn {
+                                width: 250px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .autoSizerWrapper {
+            .messages {
+                width: calc(100% - 3px) !important;
+            }
+        }
+
+        .inputBar {
+            padding: 0;
+            margin: 0;
+
+            .fileAdded {
+                width: 100%;
+            }
+
+            .add {
+                margin: 0 3px;
+            }
+
+            .send {
+                margin: 0 3px;
+            }
+
+            .input {
+                width: 100%;
+                font-size: var(--regular-size);
+            }
+        }
+    }
+}
+
+@media (max-width: 880px) {
+    .noMessagesDiv {
+        font-size: var(--big-size) !important;
+    }
+}
+
+@media (max-height: 1080px) {
+    .chat {
+        height: global.getSizeH(700, 930, "mid");
+
+        .modal {
+            .innerModal {
+                padding-top: global.getSizeH(14, 20, "mid");
+                padding-bottom: global.getSizeH(14, 20, "mid");
+
+                .photoChange {
+                    margin-bottom: global.getSizeH(20, 30, "mid");
+                }
+
+                .members {
+                    margin-top: global.getSizeH(20, 30, "mid");
+
+                    .membersList {
+                        height: global.getSizeH(100, 150, "mid");
+                        margin: global.getSizeH(20, 30, "mid") 0;
+                        gap: global.getSizeH(10, 15, "mid");
+
+                        .member {
+                            padding: global.getSizeH(6, 10, "mid") 0;
+                        }
+                    }
+                }
+
+                .h2 {
+                    margin-bottom: global.getSizeH(10, 15, "mid");
+                }
+
+                .btnGroup {
+                    margin-top: global.getSizeH(6, 10, "mid");
+                }
+            }
+        }
+
+        .upperBar {
+            padding-top: global.getSizeH(18, 28, "mid");
+            padding-bottom: global.getSizeH(18, 28, "mid");
+
+            .moreWrapper {
+                .modalsWrapper {
+                    .moreTab {
+                        padding-top: global.getSizeH(6, 10, "mid");
+                        padding-bottom: global.getSizeH(6, 10, "mid");
+
+                        .membersList {
+                            padding: 0 global.getSizeH(14, 20, "mid");
+                            margin-top: global.getSizeH(14, 20, "mid");
+                        }
+
+                        .btnGroup {
+                            padding-top: global.getSizeH(6, 10, "mid");
+                            margin-top: global.getSizeH(14, 20, "mid");
+                            gap: global.getSizeH(6, 10, "mid");
+                        }
+                    }
+                }
+            }
+        }
+
+        .inputBar {
+            padding: global.getSizeH(14, 19, "mid") 0 global.getSizeH(20, 30, "mid") 0;
+        }
+    }
+}
+
+@media (max-height: 768px) {
+    @media (max-width: 768px) {
+        .chat {
+            position: fixed;
+            z-index: 1000;
+            bottom: 0;
+            width: 100%;
+            height: 100% !important;
+
+            .upperBar {
+                padding-top: 3px;
+                padding-bottom: 2px;
+
+                .moreWrapper {
+                    .modalsWrapper {
+                        .moreTab {
+                            padding-top: 5px;
+                            min-width: 290px;
+                            right: 265px;
+                            .membersList {
+                                padding: 5px;
+                                margin-top: 5px;
+                            }
+
+                            .btnGroup {
+                                padding-top: 5px;
+                                margin-top: 5px;
+                                gap: 5px;
+                            }
+                        }
+                    }
+                }
+            }
+            .inputBar {
+                padding-top: 2px;
+                padding-bottom: 5px;
+            }
+
+            .autoSizerWrapper
+            {
+                .noMessagesDiv {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+@media (min-height: 1536px) {
+    .chat {
+        height: 1386px;
+    }
+}

@@ -1,0 +1,47 @@
+{
+  "name": "wfnchat",
+  "version": "1.0.0",
+  "description": "Messanger app",
+  "scripts": {
+    "dev": "next dev",
+    "debug": "cross-env NODE_OPTIONS='--inspect' next dev --development",
+    "build": "next build && next export",
+    "start": "next start --production",
+    "analyze": "source-map-explorer .next/static/**/*.js",
+    "stylelint": "stylelint \"**/*.*css\" --fix"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "mobx": "^6.3.13",
+    "mobx-react": "^7.3.0",
+    "mobx-react-lite": "^3.2.3",
+    "next": "^12.0.10",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-virtualized": "^9.22.3",
+    "react-virtualized-auto-sizer": "^1.0.6",
+    "react-window": "^1.8.6"
+  },
+  "devDependencies": {
+    "@svgr/webpack": "^6.2.1",
+    "@types/node": "^17.0.16",
+    "@types/react": "^17.0.39",
+    "@typescript-eslint/eslint-plugin": "^5.16.0",
+    "@typescript-eslint/parser": "^5.16.0",
+    "classnames": "^2.3.1",
+    "eslint": "^8.11.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "normalize.css": "^8.0.1",
+    "prettier": "^2.6.0",
+    "sass": "^1.49.7",
+    "stylelint": "^14.6.0",
+    "stylelint-config-idiomatic-order": "^8.1.0",
+    "stylelint-config-standard-scss": "^3.0.0",
+    "stylelint-order": "^5.0.0",
+    "stylelint-scss": "^4.2.0",
+    "typescript": "^4.5.5"
+  }
+}

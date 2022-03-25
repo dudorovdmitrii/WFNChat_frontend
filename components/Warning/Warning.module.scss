@@ -1,0 +1,62 @@
+@use "../../styles/global.scss" as global;
+
+.wrapper {
+    position: absolute;
+    z-index: 2000;
+    top: 10px;
+    left: 0;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    justify-items: center;
+
+    .warning {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 10px;
+        border-radius: 6px;
+        font-family: var(--font);
+        font-size: var(--big-size);
+        gap: 20px;
+        justify-items: center;
+        text-align: center;
+        transition: 1s;
+
+        .svg {
+            display: none;
+        }
+
+        .svgOpen {
+            display: block;
+        }
+    }
+
+    .dangerWarning {
+        background: var(--red-danger);
+    }
+
+    .successWarning {
+        background: var(--green-success);
+    }
+}
+
+@media (max-height: 1080px) {
+    .wrapper {
+        top: global.getSizeH(8, 10, "mid");
+
+        .warning {
+            padding: global.getSizeH(8, 10, "mid");
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .wrapper {
+        top: 10px;
+
+        .warning {
+            padding: 5px;
+        }
+    }
+}

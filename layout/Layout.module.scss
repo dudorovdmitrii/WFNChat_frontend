@@ -1,0 +1,59 @@
+@use "../styles/global.scss" as global;
+
+.layout {
+    display: grid;
+    overflow: hidden;
+    max-width: 1920px;
+    height: 100vh;
+    max-height: 1536px;
+    margin: 0 auto;
+    font-family: var(--font-family);
+    grid-template-areas: "sidebar main";
+    grid-template-columns: 290px 1fr;
+}
+
+@media (max-width: 1920px) {
+    .layout {
+        grid-template-columns: global.getSizeW(190, 290, "desktop") 1fr;
+    }
+}
+
+@media (max-width: 1228px) {
+    .layout {
+        grid-template-areas:
+            "main"
+            "sidebar";
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .layout {
+        overflow: auto !important;
+    }
+}
+
+.unauthorized {
+    grid-template-areas: "main";
+    grid-template-columns: 1fr;
+}
+
+.sidebar {
+    display: none;
+    max-width: 290px;
+    grid-area: sidebar;
+}
+
+.main {
+    background: var(--grey-bright);
+    grid-area: main;
+}
+
+.mainBlackTheme {
+    background: var(--black-theme-grey-bright);
+}
+
+.open {
+    display: block;
+}

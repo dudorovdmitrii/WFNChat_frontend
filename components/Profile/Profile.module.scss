@@ -1,0 +1,304 @@
+@use "../../styles/global.scss" as global;
+
+.profile {
+    display: grid;
+    max-width: 700px;
+    margin-top: 110px !important;
+    margin-right: auto;
+    margin-left: auto;
+    font-family: var(--font);
+    gap: 20px;
+    grid-template-areas:
+        "photo mainInfo"
+        "description description"
+        "additionalInfo additionalInfo"
+        "actions actions";
+    grid-template-columns: 300px auto;
+    line-height: 26px;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    .photo {
+        margin: 0 auto;
+        background: var(--white);
+        border-radius: 6px;
+        grid-area: photo;
+    }
+
+    .mainInfo {
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
+        background: var(--white);
+        border-radius: 6px;
+        grid-area: mainInfo;
+
+        .name {
+            display: flex;
+            flex: 1;
+            align-items: center;
+            justify-content: center;
+
+            .input {
+                width: 100%;
+                border: none;
+                font-size: var(--bigger-size);
+                font-weight: bold;
+                outline: none;
+                text-align: center;
+            }
+        }
+
+        .statistics {
+            display: flex;
+            flex: 1;
+            flex-direction: row;
+            justify-content: space-around;
+            color: var(--grey-darker);
+            font-size: var(--regular-size);
+            gap: 15px;
+
+            .stat {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    }
+
+    .description {
+        padding: 15px;
+        background: var(--white);
+        border-radius: 6px;
+        color: var(--grey-darker);
+        grid-area: description;
+
+        .descriptionInput {
+            overflow: auto;
+            width: 100%;
+            height: fit-content;
+            border: none;
+            outline: none;
+        }
+    }
+
+    .additionalInfo {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 15px;
+        margin: 0 auto;
+        background: var(--white);
+        border-radius: 6px;
+        color: var(--grey-darker);
+        grid-area: additionalInfo;
+
+        .birthdayInput {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            border: none;
+        }
+    }
+
+    .h1 {
+        margin-bottom: 15px;
+        color: var(--black);
+        font-size: var(--bigger-size);
+        font-weight: bold;
+    }
+
+    .actions {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        grid-area: actions;
+
+        .hiddenInputWrap {
+            display: flex;
+            width: 240px;
+            flex-direction: row;
+            align-items: center;
+
+            .hiddenInput {
+                width: 0;
+                height: 0;
+            }
+        }
+    }
+}
+
+.profileBlackTheme {
+    .photoWrapper {
+        background: var(--black-theme-white);
+    }
+
+    .mainInfo {
+        background: var(--black-theme-white);
+
+        .name {
+            .input {
+                background: var(--black-theme-white);
+                caret-color: var(--white);
+                color: var(--black-theme-white-text);
+            }
+        }
+
+        .statistics {
+            color: var(--black-theme-white-text);
+        }
+    }
+
+    .description {
+        background: var(--black-theme-white);
+        color: var(--black-theme-white-text);
+
+        .descriptionInput {
+            background: var(--black-theme-white);
+            color: var(--black-theme-white-text);
+        }
+
+        .h1 {
+            color: inherit;
+        }
+    }
+
+    .additionalInfo {
+        background: var(--black-theme-white);
+        color: var(--black-theme-white-text);
+
+        .birthdayInput {
+            background: var(--black-theme-white);
+            color: var(--black-theme-white-text);
+        }
+
+        .h1 {
+            color: var(--black-theme-white-text);
+        }
+    }
+}
+
+@media (max-height: 1080px) {
+    .profile {
+        margin-top: global.getSizeH(48, 110, "mid") !important;
+
+        .mainInfo {
+            padding: global.getSizeH(10, 15, "mid");
+
+            .statistics {
+                gap: global.getSizeH(10, 15, "mid");
+            }
+        }
+
+        .description {
+            padding: global.getSizeH(10, 15, "mid");
+        }
+
+        .additionalInfo {
+            padding: global.getSizeH(10, 15, "mid");
+        }
+
+        .h1 {
+            margin-bottom: global.getSizeH(10, 15, "mid");
+        }
+    }
+}
+
+@media (max-width: 1920px) {
+    .profile {
+        gap: global.getSizeW(10, 20, "desktop");
+
+        .mainInfo {
+            padding-right: global.getSizeW(8, 15, "desktop");
+            padding-left: global.getSizeW(8, 15, "desktop");
+        }
+
+        .description {
+            padding-right: global.getSizeW(8, 15, "desktop");
+            padding-left: global.getSizeW(8, 15, "desktop");
+        }
+
+        .additionalInfo {
+            padding-right: global.getSizeW(8, 15, "desktop");
+            padding-left: global.getSizeW(8, 15, "desktop");
+        }
+    }
+}
+
+@media (max-width: 1228px) {
+    .profile {
+        max-width: 700px;
+        margin-top: global.getSizeH(10, 30, "mid") !important;
+        gap: 10px;
+
+        .mainInfo {
+            padding-right: global.getSizeW(8, 15, "tablet");
+            padding-left: global.getSizeW(8, 15, "tablet");
+        }
+
+        .description {
+            padding-right: global.getSizeW(8, 15, "tablet");
+            padding-left: global.getSizeW(8, 15, "tablet");
+        }
+
+        .additionalInfo {
+            padding-right: global.getSizeW(8, 15, "tablet");
+            padding-left: global.getSizeW(8, 15, "tablet");
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .profile {
+        overflow: auto;
+        width: auto;
+        max-width: 100%;
+        margin: 10px 5px 20px !important;
+        gap: 10px;
+        grid-template-areas:
+            "mainInfo"
+            "photo"
+            "description"
+            "additionalInfo"
+            "actions";
+        grid-template-columns: 1fr;
+
+        .mainInfo {
+            flex-direction: column;
+            padding: 10px;
+            gap: 10px;
+
+            .name {
+                .input {
+                    width: 100%;
+                }
+            }
+        }
+
+        .description {
+            padding: 5px;
+        }
+
+        .additionalInfo {
+            padding: 5px;
+        }
+
+        .h1 {
+            margin-bottom: 15px;
+            color: var(--black);
+            font-size: var(--bigger-size);
+            font-weight: bold;
+        }
+
+        .actions {
+            .hiddenInputWrap {
+                width: 150px;
+                flex-direction: row;
+            }
+
+            .btn {
+                width: 150px;
+            }
+        }
+    }
+}

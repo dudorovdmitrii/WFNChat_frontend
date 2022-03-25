@@ -1,0 +1,35 @@
+.settings {
+    width: 500px;
+    margin: 92px auto 40px;
+
+    .setting {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        background: var(--white);
+        border-radius: 6px;
+        color: var(--black);
+        font-size: var(--big-size);
+    }
+}
+
+.settingsBlackTheme {
+    .setting {
+        background: var(--black-theme-white);
+        color: var(--black-theme-white-text);
+    }
+}
+
+@media (max-width: 768px) {
+    .settings {
+        width: auto;
+        max-width: 100%;
+        margin: 10px;
+
+        .setting {
+            padding: 5px;
+        }
+    }
+}

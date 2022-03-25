@@ -1,0 +1,27 @@
+.notification {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 20px;
+    background: var(--white);
+    border-radius: 6px;
+    font-size: var(--big-size);
+    gap: 20px;
+    justify-items: center;
+
+    .svgFriendAcception {
+        > circle {
+            fill: var(--green-success);
+        }
+    }
+
+    .text {
+        flex: 1;
+    }
+}
+
+.notificationBlackTheme {
+    background: var(--black-theme-white);
+    color: var(--black-theme-white-text);
+}
