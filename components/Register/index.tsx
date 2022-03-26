@@ -144,7 +144,7 @@ export const Register = observer(({ className, ...props }: RegisterProps): JSX.E
         })
     }
     const findNextField = (elements: formElementsInterface, number: number) => {
-        for (let element in elements) {
+        for (const element in elements) {
             const elem = elements[element]
             if (elem instanceof HTMLInputElement) {
                 if (parseInt(elem.dataset['fieldnumber']) === number + 1) {
