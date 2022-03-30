@@ -1,5 +1,5 @@
 const APIDomain = '62.113.106.11:80'
-const connectSrc = `http://${APIDomain}:* ws://${APIDomain}*`
+const connectSrc = `http://${APIDomain}* ws://${APIDomain}*`
 const fontSrc = '*.fonts.googleapis.com'
 
 const ContentSecurityPolicy = `
