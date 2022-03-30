@@ -156,6 +156,7 @@ export const Register = observer(({ className, ...props }: RegisterProps): JSX.E
         return false
     }
     const handleNext = async (event: React.KeyboardEvent) => {
+        if (event.key != 'Enter') return
         event.preventDefault()
         const input: HTMLInputElement = event.target as HTMLInputElement
         const fieldNumber = parseInt(input.dataset['fieldnumber'])
