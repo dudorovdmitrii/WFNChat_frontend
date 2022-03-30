@@ -49,6 +49,6 @@ const config = {
                 headers: securityHeaders,
             },
         ]
-    },
+    }
 };
 module.exports = config

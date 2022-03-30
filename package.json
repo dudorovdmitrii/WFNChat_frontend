@@ -6,7 +6,7 @@
     "dev": "next dev",
     "debug": "cross-env NODE_OPTIONS='--inspect' next dev --development",
     "build": "next build && next export",
-    "start": "next start --production",
+    "start": "next start",
     "analyze": "source-map-explorer .next/static/**/*.js",
     "stylelint": "stylelint \"**/*.*css\" --fix"
   },
