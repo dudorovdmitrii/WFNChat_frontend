@@ -1,5 +1,5 @@
-const api = 'http://192.168.43.159:*'
-const connectSrc = 'http://192.168.43.159:* ws://192.168.43.159:*'
+const APIDomain = '62.113.106.11:80'
+const connectSrc = `http://${APIDomain}:* ws://${APIDomain}:*`
 const fontSrc = '*.fonts.googleapis.com'
 
 const ContentSecurityPolicy = `
@@ -7,8 +7,8 @@ const ContentSecurityPolicy = `
   connect-src 'self' ${connectSrc};
   style-src 'self' 'unsafe-inline';
   script-src 'self' 'unsafe-eval';
-  img-src 'self' ${api}; 
-  media-src 'self' ${api};
+  img-src 'self' 'http://${APIDomain}:*'; 
+  media-src 'self' 'http://${APIDomain}:*';
   font-src 'self' ${fontSrc};  
 `
 const securityHeaders = [

@@ -1,8 +1,7 @@
 // URLs
-const APIDomainPhone = '192.168.43.159'
-const APIDomainWiFi = '192.168.1.102'
-export const APIDomainHTTP = `http://${APIDomainPhone}:8000`
-export const APIDomainWS = `ws://${APIDomainPhone}:8000/ws`
+const APIDomain = '62.113.106.11:80'
+export const APIDomainHTTP = `http://${APIDomain}`
+export const APIDomainWS = `ws://${APIDomain}/ws`
 
 // Ошибки
 export const AuthorizationErrorMessage = 'Что-то пошло не так'
