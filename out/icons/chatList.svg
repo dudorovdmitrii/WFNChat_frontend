@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="Outline" viewBox="0 0 24 24" width="24" height="24" fill='url(#paint0_linear_1_404)'>
+<path d="M7,6H23a1,1,0,0,0,0-2H7A1,1,0,0,0,7,6Z"/>
+<path d="M23,11H7a1,1,0,0,0,0,2H23a1,1,0,0,0,0-2Z"/>
+<path d="M23,18H7a1,1,0,0,0,0,2H23a1,1,0,0,0,0-2Z"/>
+<circle cx="2" cy="5" r="2"/>
+<circle cx="2" cy="12" r="2"/>
+<circle cx="2" cy="19" r="2"/>
+<linearGradient id="paint0_linear_1_404" x1="29.3333" y1="37.3333" x2="6.66667" y2="4" gradientUnits="userSpaceOnUse">
+<stop stop-color="#707C97"/>
+<stop offset="1" stop-color="#707C97"/>
+</linearGradient>
+</svg>
