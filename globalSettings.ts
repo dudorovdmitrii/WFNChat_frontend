@@ -1,5 +1,5 @@
 // URLs
-const APIDomain = '62.113.106.11:80'
+const APIDomain = 'wfnchat.store'
 export const APIDomainHTTP = `http://${APIDomain}`
 export const APIDomainWS = `ws://${APIDomain}/ws`
 
