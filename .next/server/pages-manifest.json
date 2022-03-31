@@ -1,0 +1,14 @@
+{
+  "/_app": "pages/_app.js",
+  "/_document": "pages/_document.js",
+  "/confirm/[uid]/[token]": "pages/confirm/[uid]/[token].html",
+  "/friends": "pages/friends.html",
+  "/": "pages/index.html",
+  "/login": "pages/login.html",
+  "/notifications": "pages/notifications.html",
+  "/profile": "pages/profile.html",
+  "/register": "pages/register.html",
+  "/settings": "pages/settings.html",
+  "/_error": "pages/_error.js",
+  "/404": "pages/404.html"
+}
