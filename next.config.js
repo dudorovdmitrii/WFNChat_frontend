@@ -1,5 +1,5 @@
 const APIDomain = 'wfnchat.store'
-const connectSrc = `http://${APIDomain}:* ws://${APIDomain}:*`
+const connectSrc = `https://${APIDomain} ws://${APIDomain}`
 const fontSrc = '*.fonts.googleapis.com'
 
 const ContentSecurityPolicy = `
@@ -7,8 +7,8 @@ const ContentSecurityPolicy = `
   connect-src 'self' ${connectSrc};
   style-src 'self' 'unsafe-inline';
   script-src 'self' 'unsafe-eval';
-  img-src 'self' 'http://wfnchat.store:*'; 
-  media-src 'self' 'http://wfnchat.store:*';
+  img-src 'self' 'https://wfnchat.store'; 
+  media-src 'self' 'https://wfnchat.store';
   font-src 'self' ${fontSrc};  
 `
 const securityHeaders = [

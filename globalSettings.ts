@@ -1,6 +1,6 @@
 // URLs
 const APIDomain = 'wfnchat.store'
-export const APIDomainHTTP = `http://${APIDomain}`
+export const APIDomainHTTP = `https://${APIDomain}`
 export const APIDomainWS = `ws://${APIDomain}/ws`
 
 // Ошибки
