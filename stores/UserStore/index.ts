@@ -319,7 +319,6 @@ class UserStore implements UserStoreProps {
             .then(res => res.json())
             .then(data => data?.access)
             .catch(() => undefined)
-        console.log('got token')
         if (!JWTAccess) return null
         return JWTAccess
     }

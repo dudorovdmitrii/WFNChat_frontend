@@ -1,7 +1,7 @@
 // URLs
 const APIDomain = 'wfnchat.store'
 export const APIDomainHTTP = `https://${APIDomain}`
-export const APIDomainWS = `ws://${APIDomain}/ws`
+export const APIDomainWS = `wss://${APIDomain}/ws`
 
 // Ошибки
 export const AuthorizationErrorMessage = 'Что-то пошло не так'
