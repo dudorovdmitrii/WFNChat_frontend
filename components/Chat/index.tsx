@@ -404,10 +404,6 @@ export const Chat = observer(({ className, exit, ...props }: ChatProps): JSX.Ele
             setSendingStartTime(0)
         }
     }, [currentRoom?.last_message])
-    useEffect(() => {
-        if (!messagesRef.current) return
-        messagesRef
-    }, [])
     return (
         <div className={cn(className, styles.chat, { [styles.chatBlackTheme]: theme === 'black' })} {...props}>
             <ModalWindow className={cn(styles.modal, { [styles.modalOpen]: modalOpen })}>

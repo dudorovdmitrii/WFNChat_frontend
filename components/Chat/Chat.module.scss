@@ -1,4 +1,4 @@
-@use "../../styles/global.scss" as global;
+@use "../../styles/global.scss"as global;
 
 .chat {
     display: flex;
@@ -145,6 +145,7 @@
                     position: relative;
                     right: 280px;
                     display: none;
+                    z-index: 100;
                 }
 
                 .leaveBtnOpen {
@@ -284,7 +285,7 @@
                 visibility: hidden;
             }
 
-            > div:first-child {
+            >div:first-child {
                 display: flex;
                 box-sizing: border-box;
                 flex: 1;
@@ -389,7 +390,7 @@
             cursor: pointer;
 
             &:hover {
-                linearGradient > stop {
+                linearGradient>stop {
                     transition: 0.5s;
 
                     &:first-of-type {
@@ -403,7 +404,7 @@
             }
 
             &:not(:hover) {
-                linearGradient > stop {
+                linearGradient>stop {
                     stop-color: var(--blue-no-gradient-second);
                     transition: 0.5s;
                 }
@@ -429,7 +430,7 @@
         background: var(--black-theme-white-dark);
 
         .moreWrapper {
-            .moreIcon > ellipse {
+            .moreIcon>ellipse {
                 fill: var(--black-theme-white-text);
             }
 
@@ -454,7 +455,7 @@
         }
 
         .exitIcon {
-            linearGradient > stop {
+            linearGradient>stop {
                 stop-color: var(--black-theme-white-text);
             }
         }
@@ -475,7 +476,7 @@
         }
 
         .loading {
-            linearGradient > stop {
+            linearGradient>stop {
                 stop-color: var(--black-theme-blue-no-gradient-second);
             }
         }
@@ -509,7 +510,7 @@
 
     .autoSizerWrapper {
         .messages {
-            > div:first-child {
+            >div:first-child {
                 background: var(--black-theme-white);
             }
         }
@@ -521,7 +522,7 @@
 
     .svg {
         &:hover {
-            linearGradient > stop {
+            linearGradient>stop {
                 transition: 0.5s;
 
                 :first-of-type {
@@ -535,7 +536,7 @@
         }
 
         &:not(:hover) {
-            linearGradient > stop {
+            linearGradient>stop {
                 stop-color: var(--black-theme-blue-no-gradient-second);
                 transition: 0.5s;
             }
@@ -664,6 +665,7 @@
     .chat {
         .modal {
             width: 100%;
+
             .innerModal {
                 padding: 10px;
 
@@ -880,6 +882,7 @@
                             padding-top: 5px;
                             min-width: 290px;
                             right: 265px;
+
                             .membersList {
                                 padding: 5px;
                                 margin-top: 5px;
@@ -894,13 +897,13 @@
                     }
                 }
             }
+
             .inputBar {
                 padding-top: 2px;
                 padding-bottom: 5px;
             }
 
-            .autoSizerWrapper
-            {
+            .autoSizerWrapper {
                 .noMessagesDiv {
                     display: none;
                 }

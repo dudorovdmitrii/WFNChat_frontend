@@ -1,4 +1,4 @@
-@use "../../styles/global.scss" as global;
+@use "../../styles/global.scss"as global;
 
 .messanger {
     display: grid;
@@ -19,7 +19,7 @@
         }
 
         .iconPressed {
-            > linearGradient > stop {
+            >linearGradient>stop {
                 :first-of-type {
                     stop-color: var(--blue-no-gradient-first) !important;
                 }
@@ -54,7 +54,7 @@
 
 .messangerBlackTheme {
     .iconPressed {
-        > linearGradient > stop {
+        >linearGradient>stop {
             :first-of-type {
                 stop-color: var(--black-theme-blue-no-gradient-first) !important;
             }
@@ -136,5 +136,11 @@
 @media (max-height: 768px) {
     .messanger {
         margin-top: 0 !important;
+    }
+
+    @media (min-width: 650px) {
+        .messanger {
+            margin-top: 15px !important;
+        }
     }
 }

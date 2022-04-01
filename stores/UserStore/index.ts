@@ -421,29 +421,28 @@ class UserStore implements UserStoreProps {
                 this.notifications = notifications
                 return
             }
-
             for (const key in notifications) {
                 if (!isEqual(notifications[key], this.notifications[key])) {
                     this.notifications[key] = notifications[key]
                 }
             }
 
-            notifications.friend_acceptions.forEach(id => {
+            notifications?.friend_acceptions?.forEach(id => {
                 const newDesiredFriends = this.user.desired_friends.filter(req_id => req_id != id)
                 if (!isEqual(this.user.desired_friends, newDesiredFriends)) {
                     this.user.desired_friends = newDesiredFriends
                 }
                 if (!this.user.friends.includes(id)) this.user.friends.push(id)
             })
-            notifications.friend_requests.forEach(id => {
+            notifications?.friend_requests?.forEach(id => {
                 if (!this.user.friend_requests.includes(id)) this.user.friend_requests.push(id)
             })
-            notifications.friend_deletions.forEach(id => {
+            notifications?.friend_deletions?.forEach(id => {
                 this.user.friends = this.user.friends.filter(req => req != id)
                 this.user.friend_requests = this.user.friend_requests.filter(req => req != id)
                 this.user.desired_friends = this.user.desired_friends.filter(req => req != id)
             })
-            notifications.blocked_by.forEach(id => {
+            notifications?.blocked_by?.forEach(id => {
                 this.updateUserDataInStore(id, { blocked_users: [...this.ObjectOfUsers[id].blocked_users, this.user.id] })
             })
         })

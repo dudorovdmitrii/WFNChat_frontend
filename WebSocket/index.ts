@@ -38,18 +38,18 @@ export class ServiceWS implements ServiceWSMessageInterface {
             }
             for (const room_id in notifications.messages) {
                 const id = parseInt(room_id)
-                let lastMessageTimeStamp = null
-                if (this.objectOfRooms[id]?.last_message) {
-                    lastMessageTimeStamp = JSON.parse(this.objectOfRooms[id]?.last_message)?.timestamp_created
-                }
-                const new_message = notifications?.messages[id][1]
-                if (new_message && new_message.timestamp_created != lastMessageTimeStamp) {
-                    console.log(new_message.text)
-                    if (id != this.currentRoom) {
-                        this.commonRoomUpdate(id, notifications?.messages[id][0], new_message)
-                    }
-                    changeTitle('new message')
-                }
+                // let lastMessageTimeStamp = null
+                // if (this.objectOfRooms[id]?.last_message) {
+                //     lastMessageTimeStamp = JSON.parse(this.objectOfRooms[id]?.last_message)?.timestamp_created
+                // }
+                // const new_message = notifications?.messages[id][1]
+                // if (new_message && new_message.timestamp_created != lastMessageTimeStamp) {
+                //     console.log(new_message)
+                //     if (id != this.currentRoom) {
+                //         this.commonRoomUpdate(id, notifications?.messages[id][0], new_message)
+                //     }
+                //     changeTitle('new message')
+                // }
             }
             // Обновляем в сети/не в сети статусы друзей
             this.user.friends.forEach(friend_id => this.updateUserDataInStore(friend_id, { isOnline: notifications.friends_statuses[friend_id] }))
@@ -117,6 +117,7 @@ export class WS implements WebSocketInterface {
         // Получаем сообщение по WebSocket с сервера
         this.socket.onmessage = (event) => {
             const message: MessageInterface = { ...JSON.parse(event.data) }
+            console.log(message)
             this.addMessageToRoom(this.room_id, message)
         }
         // Переподключаемся при возникновении ошибки
