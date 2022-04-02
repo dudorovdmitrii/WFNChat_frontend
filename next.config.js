@@ -21,8 +21,8 @@ const ContentSecurityPolicy = `
   connect-src 'self' ${connectSrc};
   style-src 'self' 'unsafe-inline';
   script-src 'self' 'unsafe-eval';
-  img-src 'self' http://wfnchat.store;
-  media-src 'self' http://wfnchat.store;
+  img-src 'self' http://wfnchat.store data:;
+  media-src 'self' http://wfnchat.store data:;
   font-src 'self' ${fontSrc};  
 `
 
