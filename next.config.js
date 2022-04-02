@@ -1,7 +1,19 @@
-const devAPIDomain = '192.168.43.159'
+////dev
+// const devAPIDomain = '192.168.43.159'
+// const connectSrc = `http://${devAPIDomain}:* ws://${devAPIDomain}:*`
+// const ContentSecurityPolicy = `
+//   default-src 'self';
+//   connect-src 'self' ${connectSrc};
+//   style-src 'self' 'unsafe-inline';
+//   script-src 'self' 'unsafe-eval';
+//   img-src 'self' http://192.168.43.159:*;
+//   media-src 'self' http://192.168.43.159;
+//   font-src 'self' ${fontSrc};
+// `
+
+//prod
 const APIDomain = 'wfnchat.store'
-// const connectSrc = `https://${APIDomain} wss://${APIDomain}`
-const connectSrc = `http://${devAPIDomain}:* ws://${devAPIDomain}:*`
+const connectSrc = `https://${APIDomain} wss://${APIDomain}`
 const fontSrc = '*.fonts.googleapis.com'
 
 const ContentSecurityPolicy = `
@@ -9,10 +21,10 @@ const ContentSecurityPolicy = `
   connect-src 'self' ${connectSrc};
   style-src 'self' 'unsafe-inline';
   script-src 'self' 'unsafe-eval';
-  img-src 'self' http://wfnchat.store http://192.168.43.159:*;
-  media-src 'self' http://wfnchat.store http://192.168.43.159;
+  img-src 'self' http://wfnchat.store;
+  media-src 'self' http://wfnchat.store;
   font-src 'self' ${fontSrc};  
-`//!!
+`
 
 const securityHeaders = [
     {
