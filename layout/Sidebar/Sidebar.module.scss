@@ -1,4 +1,4 @@
-@use "../../styles/global.scss" as global;
+@use "../../styles/global.scss"as global;
 
 .sidebar {
     background: var(--white);
@@ -56,7 +56,7 @@
 
             .button {
                 &:not(:hover) {
-                    .svg > linearGradient > stop {
+                    .svg>linearGradient>stop {
                         stop-color: var(--grey-darker);
                         transition: 0.5s;
                     }
@@ -82,7 +82,7 @@
                 &:hover {
                     color: var(--blue-no-gradient-second);
 
-                    .svg > linearGradient > stop {
+                    .svg>linearGradient>stop {
                         transition: 0.5s;
 
                         &:first-of-type {
@@ -101,7 +101,7 @@
             border-left: 3px solid var(--blue-no-gradient-second) !important;
             color: var(--blue-no-gradient);
 
-            .svg > linearGradient > stop {
+            .svg>linearGradient>stop {
                 &:first-of-type {
                     stop-color: var(--blue-no-gradient-first) !important;
                 }
@@ -124,7 +124,7 @@
     .actions {
         color: var(--black-theme-white-text);
 
-        .svg > linearGradient > stop {
+        .svg>linearGradient>stop {
             &:first-of-type {
                 stop-color: var(--black-theme-white-text) !important;
             }
@@ -143,7 +143,7 @@
                 &:hover {
                     color: var(--black-theme-blue-no-gradient-second);
 
-                    .svg > linearGradient > stop {
+                    .svg>linearGradient>stop {
                         transition: 0.5s;
 
                         &:first-of-type {
@@ -162,7 +162,7 @@
             border-left: 3px solid var(--black-theme-blue-no-gradient-second) !important;
             color: var(--black-theme-blue-no-gradient-second);
 
-            .svg > linearGradient > stop {
+            .svg>linearGradient>stop {
                 &:first-of-type {
                     stop-color: var(--black-theme-blue-no-gradient-first) !important;
                 }
@@ -190,6 +190,26 @@
 
             .logoutButton {
                 margin-top: global.getSizeH(224, 385, "mid");
+            }
+        }
+    }
+}
+
+@media (max-height: 768px) {
+    .sidebar {
+        .user {
+            margin-top: global.getSizeH(5, 30, "small");
+            margin-bottom: global.getSizeH(36, 56, "small");
+            gap: global.getSizeH(8, 10, "small");
+        }
+
+        .actions {
+            .nav {
+                gap: global.getSizeH(16, 32, "small");
+            }
+
+            .logoutButton {
+                margin-top: global.getSizeH(128, 224, "small");
             }
         }
     }
@@ -232,8 +252,7 @@
         flex-direction: row;
         align-items: center;
         padding:
-            0 global.getSizeW(15, 20, "tablet") 0
-            global.getSizeW(15, 20, "tablet");
+            0 global.getSizeW(15, 20, "tablet") 0 global.getSizeW(15, 20, "tablet");
         margin: 0;
 
         .user {
@@ -324,8 +343,7 @@
         width: 100%;
         height: 40px;
         padding:
-            0 global.getSizeW(5, 15, "mobile") 0
-            global.getSizeW(5, 15, "mobile");
+            0 global.getSizeW(5, 15, "mobile") 0 global.getSizeW(5, 15, "mobile");
         margin: 0;
 
         .actions {

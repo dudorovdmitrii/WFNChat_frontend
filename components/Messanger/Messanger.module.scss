@@ -138,9 +138,9 @@
         margin-top: 0 !important;
     }
 
-    @media (min-width: 650px) {
+    @media (min-width: 1228px) {
         .messanger {
-            margin-top: 15px !important;
+            margin-top: global.getSizeH(10, 48, "small") !important;
         }
     }
 }
