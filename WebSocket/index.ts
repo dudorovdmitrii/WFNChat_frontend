@@ -44,7 +44,6 @@ export class ServiceWS implements ServiceWSMessageInterface {
                 }
                 const new_message = notifications?.messages[id][1]
                 if (new_message && new_message.timestamp_created != lastMessageTimeStamp) {
-                    console.log(new_message)
                     if (id != this.currentRoom) {
                         this.commonRoomUpdate(id, notifications?.messages[id][0], new_message)
                     }
