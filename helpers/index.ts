@@ -185,7 +185,7 @@ export const validateNameSurname = (name: string, surname: string): string[] => 
 }
 
 export const showLastMessage = (message: MessageInterface) => {
-    if (!message) return
+    if (!message) return null
     return message.text
         ?
         message.text.length > 100

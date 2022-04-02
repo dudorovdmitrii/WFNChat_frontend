@@ -51,6 +51,8 @@ export const Room = observer(({ room, className, ...props }: RoomProps): JSX.Ele
             })
     }
     const makeLastMessage = (message: string) => {
+        console.log(message)
+        if (!message) return ''
         if (message === 'photo') return <PhotoFileIcon className={styles.lastMessageIcon} />
         if (message === 'audio') return <AudioFileIcon className={styles.lastMessageIcon} />
         if (message === 'video') return <VideoFileIcon className={styles.lastMessageIcon} />

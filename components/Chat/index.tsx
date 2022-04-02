@@ -533,11 +533,15 @@ export const Chat = observer(({ className, exit, ...props }: ChatProps): JSX.Ele
                                 )}
                             </AutoSizer>
                             :
-                            < div className={styles.noMessagesDiv} >
-                                <span className={styles.noMessagesSpan}>
-                                    Выберите или создайте чат
-                                </span>
-                            </div >
+                            currentRoom
+                                ?
+                                <></>
+                                :
+                                <div className={styles.noMessagesDiv} >
+                                    <span className={styles.noMessagesSpan}>
+                                        Выберите или создайте чат
+                                    </span>
+                                </div >
                     }
                 </div>
             </div >

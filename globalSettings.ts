@@ -1,14 +1,14 @@
 // URLs
 
 ////dev
-// const devAPIDomain = '192.168.43.159:8000'
-// export const APIDomainHTTP = `http://${devAPIDomain}`
-// export const APIDomainWS = `ws://${devAPIDomain}/ws`
+const APIDomain = '192.168.43.159:8000'
+export const APIDomainHTTP = `http://${APIDomain}`
+export const APIDomainWS = `ws://${APIDomain}/ws`
 
 //prod
-const APIDomain = 'wfnchat.store'
-export const APIDomainHTTP = `https://${APIDomain}`
-export const APIDomainWS = `wss://${APIDomain}/ws`
+// const APIDomain = 'wfnchat.store'
+// export const APIDomainHTTP = `https://${APIDomain}`
+// export const APIDomainWS = `wss://${APIDomain}/ws`
 
 // Ошибки
 export const AuthorizationErrorMessage = 'Что-то пошло не так'

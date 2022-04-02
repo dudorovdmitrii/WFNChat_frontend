@@ -50,6 +50,7 @@ export const Message = memo(({ message, className, index, style, setHeights, ...
             </div>)
     }
     if (message.photo) {
+        console.log(message.photo)
         return (
             <div className={getMessageClassNames()} {...props} ref={messageRef} style={inlineStyles.message}>
                 <div className={styles.avatar}>
